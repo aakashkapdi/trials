@@ -16,48 +16,31 @@ class Home extends StatelessWidget {
   var go=[false,false,false,false]; //0:sos,1:mute,2:initialisation,3:navigation
 
   bool goOrNot(int touch) {
-      print("Before Checking:-");
-      print(go);
       if(go[touch])
        {
          go[touch]=false;
-         print("goOrNot if statement(true part)"+touch.toString());
          return true;
        }
        else
        {
-         print("goOrNot if statement(false part)"+touch.toString());
          for(int i=0;i<4;i++)
          { 
-           print("in for loop"+i.toString());
-          print(go);
            if(i==touch)
-             {
-               go[touch]=true;
-               print("In True-");
-               print(go);
-               print("made true"+i.toString()+" "+touch.toString());
-               }
-             
-           else
+             go[touch]=true;
+          else
              go[i]=false;
-             
-            
          }
        }
-      print("After Checking:-");
-      print(go);
-       return false;  
+    return false;  
   }    
 
+
   void cancelTouch(){
-    print(">>>>Cancelling every touch");
     for(int i=0;i<4;i++)
        go[i]=false;
   }
 
   void _startTimer(){
-
     Timer _timer;
     _timer=Timer.periodic(Duration(seconds:3),(timer){
         cancelTouch();

@@ -1,4 +1,3 @@
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'Signup.dart';
@@ -6,15 +5,9 @@ import 'home.dart';
 
 class Login extends StatelessWidget {
   
-  final FlutterTts flutterTts=FlutterTts();
-
-  Future _speak() async{
-    await flutterTts.speak("hi");
-  }
 
   @override
   Widget build(BuildContext context) {
-    _speak();
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
     return MaterialApp(
       routes: {

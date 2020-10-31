@@ -1,12 +1,73 @@
+import 'TextToSpeech.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:ui_trial/initialisation.dart';
 import 'mute.dart';
+import 'dart:async';
+
+
 
 class Home extends StatelessWidget {
-  
+
+  TextToSpeech tts=new TextToSpeech();
+  final timeout=const Duration(seconds:3);
+
+  var go=[false,false,false,false]; //0:sos,1:mute,2:initialisation,3:navigation
+
+  bool goOrNot(int touch) {
+      print("Before Checking:-");
+      print(go);
+      if(go[touch])
+       {
+         go[touch]=false;
+         print("goOrNot if statement(true part)"+touch.toString());
+         return true;
+       }
+       else
+       {
+         print("goOrNot if statement(false part)"+touch.toString());
+         for(int i=0;i<4;i++)
+         { 
+           print("in for loop"+i.toString());
+          print(go);
+           if(i==touch)
+             {
+               go[touch]=true;
+               print("In True-");
+               print(go);
+               print("made true"+i.toString()+" "+touch.toString());
+               }
+             
+           else
+             go[i]=false;
+             
+            
+         }
+       }
+      print("After Checking:-");
+      print(go);
+       return false;  
+  }    
+
+  void cancelTouch(){
+    print(">>>>Cancelling every touch");
+    for(int i=0;i<4;i++)
+       go[i]=false;
+  }
+
+  void _startTimer(){
+
+    Timer _timer;
+    _timer=Timer.periodic(Duration(seconds:3),(timer){
+        cancelTouch();
+        timer.cancel();
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
+    tts.tellCurrentScreen("Home");
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
     return  MaterialApp(
             routes: {
@@ -34,7 +95,12 @@ class Home extends StatelessWidget {
                     width: 180.0,
                     height: 312.0,
                     child:
-                      new RaisedButton(key:null, onPressed:(){},
+                      new RaisedButton(key:null, onPressed:(){tts.tellPress("SOS");
+                                                              _startTimer();
+                                                              if(goOrNot(0))
+                                                               {
+                                                                  
+                                                              }},
                         color: const Color(0xFFe0e0e0),
                         child:
                           new Text(
@@ -56,7 +122,13 @@ class Home extends StatelessWidget {
                     width: 180.0,
                     height: 312.0,
                     child:
-                      new RaisedButton(key:null, onPressed:(){Navigator.pushNamed(context,'/mute');},
+                      new RaisedButton(key:null, onPressed:(){ tts.tellPress("Mute");
+                                                              _startTimer(); 
+                                                               if(goOrNot(1))
+                                                                {
+                                                                  Navigator.pushNamed(context,'/mute');
+                                                                }
+                                                              },
                         color: const Color(0xFFe0e0e0),
                         child:
                           new Text(
@@ -86,7 +158,12 @@ class Home extends StatelessWidget {
                    width: 180.0,
                    height: 312.0,
                     child:
-                      new RaisedButton(key:null, onPressed:(){},
+                      new RaisedButton(key:null, onPressed:(){tts.tellPress("Navigation");
+                                                              _startTimer();  
+                                                              if(goOrNot(3))
+                                                               {
+                                                                  
+                                                              }},
                         color: const Color(0xFFe0e0e0),
                         child:
                           new Text(
@@ -108,7 +185,11 @@ class Home extends StatelessWidget {
                     width: 180.0,
                     height: 312.0,
                     child:
-                      new RaisedButton(key:null, onPressed:(){Navigator.pushNamed(context,'/initialisation'); },
+                      new RaisedButton(key:null, onPressed:(){ tts.tellPress("Initialisation");
+                                                               _startTimer();
+                                                                if(goOrNot(2)){
+                                                                Navigator.pushNamed(context,'/initialisation'); 
+                                                                }},
                         color: const Color(0xFFe0e0e0),
                         child:
                           new Text(

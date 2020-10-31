@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ui_trial/TextToSpeech.dart';
 import 'home.dart';
 
 class Mute extends StatelessWidget {
+
+  TextToSpeech tts=new TextToSpeech();
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
+    tts.tellCurrentScreen("Mute");
     return MaterialApp(
       routes: {
         '/home':(context)=>Home()

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ui_trial/SaveMessages.dart';
@@ -7,9 +8,10 @@ import 'home.dart';
 
 
  class Initialisation extends StatelessWidget {
+
    @override
    Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
+   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,]);
 
    return MaterialApp(
        routes: {

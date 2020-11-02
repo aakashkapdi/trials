@@ -19,6 +19,7 @@ class TextToSpeech{
   }
 
   void tellPress(String button) async{
+    setTts();
     await tts.speak(button);
 
   }

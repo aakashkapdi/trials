@@ -49,7 +49,14 @@ import 'home.dart';
                   )
                 ),
     
-              new RaisedButton(key:null, onPressed:(){Navigator.pushNamed(context, '/SaveFaces');},
+              new RaisedButton(key:null, onPressed:(){
+                
+                
+                
+                
+                
+                
+                Navigator.pushNamed(context, '/SaveFaces');},
                 padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
                 color: const Color(0xFFe0e0e0),
                 child:

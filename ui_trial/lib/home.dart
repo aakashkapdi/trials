@@ -1,7 +1,6 @@
 import 'TextToSpeech.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:ui_trial/initialisation.dart';
 import 'mute.dart';
 import 'dart:async';

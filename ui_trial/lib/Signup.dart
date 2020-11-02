@@ -23,9 +23,6 @@ class SignUp extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-//                  SizedBox(
- //               height:100
- //             ),
                   new Text(
               "Full Name",
                 style: new TextStyle(fontSize:25.0,

@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"projecttrials7bf670257bf67025": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}

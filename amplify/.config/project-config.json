@@ -1,0 +1,13 @@
+{
+    "projectName": "projecttrials",
+    "version": "3.0",
+    "frontend": "flutter",
+    "flutter": {
+        "config": {
+            "ResDir": "./lib/"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}

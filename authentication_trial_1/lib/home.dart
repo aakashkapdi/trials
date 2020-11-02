@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:authentication_trial/UploadImages.dart';
 import 'package:authentication_trial/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:amplify_core/amplify_core.dart';
@@ -139,8 +140,12 @@ class _HomeState extends State<Home> {
        return Wrapper();
     else    
       return MaterialApp(
+        routes: {
+          '/upload':(context)=>UploadImages()
+        },
         title: 'home',
-        home: Scaffold(
+        home: Builder(builder: (context)=>
+                Scaffold(
           appBar: AppBar(title: Text("Home"),),
           body: Column(children:<Widget>[
                                   Center(
@@ -177,6 +182,12 @@ class _HomeState extends State<Home> {
                                     },
                                               child:Text("Get Uid"))
                                   ),
+                                    Center(
+                                    child: RaisedButton(onPressed: (){
+                                        Navigator.pushNamed(context, '/upload');
+                                    },
+                                              child:Text("Go to Upload Images"))
+                                  ),
                                   
 
 
@@ -187,7 +198,9 @@ class _HomeState extends State<Home> {
           
           
           
-        )
+        ))
+        
+
       );
   }
 }

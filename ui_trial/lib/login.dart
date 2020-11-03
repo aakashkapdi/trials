@@ -8,6 +8,11 @@ import 'dart:async';
 
 class Login extends StatelessWidget {
   TextToSpeech tts = new TextToSpeech();
+
+  TextEditingController usernameController=new TextEditingController();
+  TextEditingController passwordController=new TextEditingController();
+  
+
   final timeout = const Duration(seconds: 3);
 
   var go = [false, false]; //0:login,1:signup
@@ -73,7 +78,14 @@ class Login extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         SizedBox(height: 50),
-                        new Text(
+                        GestureDetector(
+                          onDoubleTap: (){
+                            if(!usernameController.text.isEmpty)
+                              tts.promptInput(usernameController.text); 
+                          },
+                          child: Column(
+                            children:<Widget>[
+                                    new Text(
                           "Username",
                           style: new TextStyle(
                               fontSize: 20.0,
@@ -82,14 +94,32 @@ class Login extends StatelessWidget {
                               fontFamily: "Roboto"),
                         ),
                         new TextField(
+                          controller: usernameController,
                           style: new TextStyle(
                               fontSize: 25.0,
                               color: const Color(0xFF000000),
                               fontWeight: FontWeight.w600,
                               fontFamily: "Roboto"),
+                                onTap: (){
+                                if(usernameController.text.isEmpty)
+                                tts.promptInput("Enter your username");
+                              },
+                              onChanged: (value) {
+                                tts.inputPlayback(value);
+                              },
                         ),
-                        new Text(
-                          "Password",
+
+                            ]
+                          ),
+                        ),
+                          GestureDetector(
+                            onDoubleTap: (){
+                            if(!passwordController.text.isEmpty)
+                              tts.promptInput(passwordController.text); 
+                          },
+                          child:Column(children: <Widget>[
+                            new Text(
+                          "Enter Password ",
                           style: new TextStyle(
                               fontSize: 20.0,
                               color: const Color(0xFFFFFFFF),
@@ -97,12 +127,27 @@ class Login extends StatelessWidget {
                               fontFamily: "Roboto"),
                         ),
                         new TextField(
-                            style: new TextStyle(
-                                fontSize: 25.0,
-                                color: const Color(0xFF000000),
-                                fontWeight: FontWeight.w600,
-                                fontFamily: "Roboto"),
-                                keyboardType: TextInputType.numberWithOptions()),
+                          obscureText: true,
+                          controller: passwordController,
+                          style: new TextStyle(
+                              fontSize: 25.0,
+                              color: const Color(0xFF000000),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Roboto"),
+                              keyboardType:TextInputType.number ,
+                              onTap: (){
+                                if(passwordController.text.isEmpty)
+                                   tts.promptInput("Enter your password");
+                              },
+                              onChanged: (value) {
+                                tts.inputPlayback(value);
+                              },
+                        ),
+
+
+                          ],) 
+
+                        ),
                         new Padding(
                           child: new SizedBox(
                             width: 200.0,

@@ -174,6 +174,7 @@ TextEditingController confirmPasswordController=new TextEditingController();
                               color: const Color(0xFF000000),
                               fontWeight: FontWeight.w600,
                               fontFamily: "Roboto"),
+                              keyboardType:TextInputType.number,
                               onTap: (){
                                 if(passwordController.text.isEmpty)
                                    tts.promptInput("Enter your password");

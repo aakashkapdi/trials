@@ -69,6 +69,28 @@ void uploadImages(String folder,String name)async{
 
    }
 
+   void uploadVideo(String folder,String name)async{
+      configureAuthStorage();
+      AuthUser auth_result=await Amplify.Auth.getCurrentUser();
+      String key=auth_result.userId.toString()+"/"+folder+"/"+name;
+     File res,local;
+      try{
+      res= await FilePicker.getFile(type:FileType.video);
+      local= File(res.absolute.path);   
+
+
+       }catch(e){print("_________________________________________________Error while picking video "+e.toString());}
+        try{
+    
+    UploadFileResult result= await Amplify.Storage.uploadFile(local: local, key: key);
+    setState(() {
+      _uploaded=folder+"/"+name+" video uploaded";
+    });
+
+   }catch(e){print("____________________________________________________________________________Error while uploading the video"+e.toString());}
+
+   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -99,7 +121,11 @@ void uploadImages(String folder,String name)async{
           RaisedButton(onPressed: (){
                        Navigator.popAndPushNamed(context, '/rekog');
           },
-                       child: Text("Go to Rekognition"))
+                       child: Text("Go to Rekognition")),
+          RaisedButton(onPressed: (){
+                       uploadVideo(folderController.text,nameController.text);
+          },
+                       child: Text("Upload Video"))
         ]
         ),),
       )

@@ -9,7 +9,6 @@ import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 import 'amplifyconfiguration.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:aws_rekognition_api/rekognition-2016-06-27.dart' as rk;
-import 'package:aws_kinesis_api/kinesis-2013-12-02.dart';
 
 
 

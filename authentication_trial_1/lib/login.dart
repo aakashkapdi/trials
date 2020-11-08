@@ -2,7 +2,8 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:authentication_trial/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:amplify_core/amplify_core.dart';
-
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'amplifyconfiguration.dart';
 
 
 class Login extends StatefulWidget {
@@ -13,12 +14,34 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
   bool isSignedIn=false;  
+  bool _amplifyConfigured=false;
 
   TextEditingController usernameController=new TextEditingController();
   TextEditingController passwordController=new TextEditingController();
 
 
+  Amplify amplifyInstance = Amplify();
+  AmplifyAuthCognito auth = AmplifyAuthCognito();
+  AmplifyStorageS3 storage = AmplifyStorageS3();
+
+   void configureAuthStorage() async{
+  if(_amplifyConfigured){
+    return;
+  }
+  try{
+        amplifyInstance.addPlugin(authPlugins: [auth],storagePlugins: [storage]);
+        amplifyInstance.configure(amplifyconfig);
+        _amplifyConfigured=true;
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.amplify configured in Login Page");
+      }catch(e){
+        print("following error occurred during amplify configuration in home page:- "+e.toString());
+      }
+    }
+  
+
+
   void _login() async{
+    configureAuthStorage();
 
        try{
          SignInResult res= await Amplify.Auth.signIn(username: usernameController.text, password: passwordController.text);

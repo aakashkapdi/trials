@@ -33,7 +33,12 @@ dependencies:
   amplify_storage_s3: ^0.0.1-dev.3
   file_picker: ^1.3.5
   aws_rekognition_api: ^0.1.1
-  aws_kinesis_api: ^0.1.1
+  aws_kinesisvideo_api: ^0.0.2
+  camera: ^0.5.8+11
+  flutter_webrtc: ^0.4.0
+  path_provider: ^1.6.14
+
+
   
 dev_dependencies:
   flutter_test:

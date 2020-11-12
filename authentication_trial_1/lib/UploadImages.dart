@@ -70,7 +70,7 @@ void uploadImages(String folder,String name)async{
    }
 
    void uploadVideo(String folder,String name)async{
-      configureAuthStorage();
+      //configureAuthStorage();
       AuthUser auth_result=await Amplify.Auth.getCurrentUser();
       String key=auth_result.userId.toString()+"/"+folder+"/"+name;
      File res,local;

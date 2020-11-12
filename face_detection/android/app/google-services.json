@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "357004065721",
+    "firebase_url": "https://mycompfacedetection.firebaseio.com",
+    "project_id": "mycompfacedetection",
+    "storage_bucket": "mycompfacedetection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357004065721:android:d358ca240f4a5d8e4bd468",
+        "android_client_info": {
+          "package_name": "com.example.face_detection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357004065721-o1i3qklk0o6f1i52nq12i9mgtb3omo69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzXnjcBSQqHu_RShzs6_6gHGPA5meA5Fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357004065721-o1i3qklk0o6f1i52nq12i9mgtb3omo69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

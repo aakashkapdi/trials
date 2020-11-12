@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "874597553724",
+    "firebase_url": "https://facenet-4ecbe.firebaseio.com",
+    "project_id": "facenet-4ecbe",
+    "storage_bucket": "facenet-4ecbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874597553724:android:a05dcf979cde17b2455539",
+        "android_client_info": {
+          "package_name": "com.example.facenet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874597553724-eeqkhb1bjiqmu8hbdf12i0kj0eiprkf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf-yZshlfXtkhLFGrs9QGHcJbv9f6v3pw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874597553724-eeqkhb1bjiqmu8hbdf12i0kj0eiprkf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

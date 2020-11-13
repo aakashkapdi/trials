@@ -61,7 +61,7 @@ class _MyHomePageState extends State<_MyHomePage> {
 
       var interpreterOptions = tfl.InterpreterOptions()
         ..addDelegate(gpuDelegateV2);
-      interpreter = await tfl.Interpreter.fromAsset('mobilefacenet.tflite',
+      interpreter = await tfl.Interpreter.fromAsset('facenet.tflite',
           options: interpreterOptions);
     } on Exception {
       print('Failed to load model.');

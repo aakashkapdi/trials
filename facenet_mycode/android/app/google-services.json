@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "462016211425",
+    "firebase_url": "https://myfacenet-56384.firebaseio.com",
+    "project_id": "myfacenet-56384",
+    "storage_bucket": "myfacenet-56384.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462016211425:android:c99712129c0526247ecaa0",
+        "android_client_info": {
+          "package_name": "com.example.facenet_mycode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462016211425-s6h26t8gs1m5on31ch4c5duh5dkeiot7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKx2B0QsQkFtTP3CfLszPBGzyviBKTvC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462016211425-s6h26t8gs1m5on31ch4c5duh5dkeiot7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

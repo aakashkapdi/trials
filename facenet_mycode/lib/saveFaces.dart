@@ -7,7 +7,6 @@ import 'dart:io' as io;
 import 'cameraHome.dart';
 import 'util.dart';
 import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
 
 
 class saveFaces extends StatefulWidget {
@@ -60,32 +59,18 @@ class _saveFacesState extends State<saveFaces> {
                 y = (_face.boundingBox.top - 10);
                 w = (_face.boundingBox.width + 10);
                 h = (_face.boundingBox.height + 10);
+                print("y:"+_face.headEulerAngleY.toString()+" z:"+_face.headEulerAngleZ.toString());
+                
                 imglib.Image croppedImage = imglib.copyCrop(convertedImage, x.round(), y.round(), w.round(), h.round());
                 print("1:  "+croppedImage.width.toString()+" "+croppedImage.height.toString());
                 croppedImage = imglib.copyResizeCropSquare(croppedImage, 112);
                 print("2:  "+croppedImage.width.toString()+" "+croppedImage.height.toString());
-                print("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}");
                 var op=preProcess(croppedImage);
-              //  print(op.length);
-              //  op.forEach((element) {print(element);});
-                
-                // tempDir = await getApplicationDocumentsDirectory();
-                // String _embPath = tempDir.path + '/emb.json';
-                // jsonFile = new io.File(_embPath);
-                //print("data b4 adding:- "+data.length.toString());
-                if (jsonFile.existsSync()) data = json.decode(jsonFile.readAsStringSync());
-                print("______________________________________________________________________________"+data.toString());
+                if (jsonFile.existsSync()) data = json.decode(jsonFile.readAsStringSync());          
                 data[_textController.text] = List.from(op);
-                print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+data.toString());
-                
-
-                 
-                //print("data b4 adding 2 :- "+data.length.toString());
                 jsonFile.writeAsStringSync(json.encode(data));
                 if (jsonFile.existsSync()) data1 = json.decode(jsonFile.readAsStringSync());
-                print("data b4 adding 2 :- "+data1.length.toString());
-                
-          
+
               }
         }  
 

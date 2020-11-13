@@ -1,5 +1,5 @@
+import 'package:facenet_mycode/cameraHome.dart';
 import 'package:flutter/material.dart';
-import 'cameraHome.dart';
 import 'saveFaces.dart';
 import 'dart:io' as io;
 import 'package:path_provider/path_provider.dart';
@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 void main() {
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
  
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home:Builder( builder:
         (context){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>saveFaces(jsonFile:jsonFile)));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>cameraHome(jsonFile:jsonFile)));
         } 
       )
     );

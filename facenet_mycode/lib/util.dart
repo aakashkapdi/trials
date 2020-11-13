@@ -4,7 +4,6 @@ import 'dart:ui';
 import 'dart:typed_data';
 import 'package:image/image.dart' as imglib;
 import 'dart:math';
-import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 
 
 typedef HandleDetection = Future<dynamic> Function(FirebaseVisionImage image);

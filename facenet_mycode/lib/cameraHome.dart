@@ -8,7 +8,7 @@ import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'dart:io' as io;
 import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 
 
@@ -26,8 +26,8 @@ class _cameraHomeState extends State<cameraHome> {
 
   io.File jsonFile;
   _cameraHomeState(this.jsonFile);
+  FlutterTts tts=new FlutterTts();
 
- //List<dynamic> data;
  bool _isDetecting = false;
  CameraLensDirection _direction = CameraLensDirection.front;
  CameraController _camera;
@@ -76,12 +76,18 @@ String compare(List currEmb) {
     for (String label in data.keys) {
       currDist = euclideanDistance(data[label], currEmb);
       label1=label;
-    //  print("current:-"+currDist.toString());
       if (currDist <= threshold && currDist < minDist) {
         minDist = currDist;
         predRes = label;
       }
     }
+    if(predRes.compareTo("NOT RECOGNIZED")==0)
+       {
+
+       } 
+    else{
+      tts.speak(predRes);
+    }      
     print(currDist.toString() + " "+label1+"   "+ predRes+" "+data.length.toString());
     return predRes;
 }  
@@ -117,7 +123,6 @@ String compare(List currEmb) {
 
     }catch(e){print("error while loading model"+e.toString());}
       
-    //tempDir = await getApplicationDocumentsDirectory();
     if (jsonFile.existsSync()) data = json.decode(jsonFile.readAsStringSync());
 
     _camera.startImageStream((image){
@@ -149,8 +154,6 @@ String compare(List currEmb) {
                 croppedImage = imglib.copyResizeCropSquare(croppedImage, 112);
                 print("2:  "+croppedImage.width.toString()+" "+croppedImage.height.toString());
                 var op=preProcess(croppedImage);
-               // op.forEach((element) {print(element);});
-              //  print(op);
                 res=_recog(op);
                 
               }
